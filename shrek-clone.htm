@@ -4,9 +4,8 @@
   <title>shrek-clone.htm</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="shrek-clone_files/w3.css">
-    <link rel="stylesheet" href="shrek-clone_files/jquery-ui.css">
-    <link rel="stylesheet" href="shrek-clone_files/style.css">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="icon" type="image/gif" href="symbol.gif">
     
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -28,8 +27,8 @@
       body {cursor: url(isolde-1.cur), auto;}
       body, html {height: 100%;}
     </style>
-    <script src="shrek-clone_files/jquery-3.6.0.js"></script>
-    <script src="shrek-clone_files/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
     $( function() {
       $( ".draggable" ).draggable();
@@ -40,18 +39,20 @@
   </head>
   <body>
     <div class="w3-content">
-      <button class="w3-button w3-round-large w3-green w3-hover-yellow w3-margin w3-xxxlarge w3-padding-large open-sans-shrek-font" onclick="var shrek1 = window.$shrek.clone(); $('#shrek-land').append(shrek1); shrek1.draggable(); shrek1.resizable(); ">Shrek</button>
+      <button style="margin-bottom: 30px; margin-top: 30px;" class="w3-button w3-round-large w3-green w3-hover-yellow w3-xxxlarge w3-padding-large open-sans-shrek-font" onclick="var shrek1 = window.$shrek.clone(); $('#shrek-land').append(shrek1); shrek1.draggable(); shrek1.resizable(); ">Shrek</button>
       <div id="shrek-land" class="w3-row ">
         <div class="draggable resizable w3-white w3-border w3-card-4 shrek w3-quarter ui-draggable ui-draggable-handle ui-resizable" style="overflow: hidden; position: relative; cursor: url(isolde-1.cur), auto;">
-          <div class="w3-row w3-light-grey w3-xlarge">
-            <div class="w3-threequarter w3-padding open-sans-shrek-font shrek-bar">Shrek</div>
-            <div onclick="this.parentElement.parentElement.remove()" class="w3-pale-red w3-center w3-hover-red w3-rest w3-round" style="font-size: 25pt; margin: 5px 5px;">&times;</div>
+          <div class="w3-row w3-light-grey">
+            <div class="w3-padding open-sans-shrek-font shrek-bar" style="float: left; width: 50%">Shrek</div>
+            <div onclick="this.parentElement.parentElement.remove()" class="w3-pale-red w3-center w3-hover-red w3-round" style="font-size: 25pt; margin: 5px 5px; float: right; width: 50px;">&times;</div>
           </div>
-          <img class="w3-image" src="shrek-clone_files/shrek.png" alt="picture of shrek">
+          <img class="w3-image" src="shrek.png" alt="picture of shrek">
         <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div></div>
       </div>
+      <div style="margin-top: 30px;">
+        <span class="w3-padding w3-black" style="opacity: .5; float: left">A website by Nico</span><span class="w3-padding w3-black" style="opacity: .5; float: right">Version 1.0</span>
+      </div>
     </div>
-    <span class="w3-display-bottomleft w3-padding">A website by Nico</span><span class="w3-display-bottomright w3-padding">Version 1.0</span>
   
  
 </body></html>
