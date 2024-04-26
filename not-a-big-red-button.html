@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Not a big, red button.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="not-a-big-red-button_files/w3.css">
+    <link rel="icon" type="image/gif" href="symbol.gif">
+    <style>
+      #bigButton {
+        font-family: monospace;
+        font-size: 20pt;
+        text-align: left;
+        transition: 15s ease;
+      }
+      .miniText {
+        font-family: monospace;
+        font-size: 10pt;
+      }
+      .veryBig {
+        font-family: monospace;
+        font-size: 95pt;
+        font-weight: bold;
+      }
+      .primaryCentered {
+        font-family: monospace;
+        font-size: 30pt;
+        text-align: center;
+      }
+      .fade {
+        opacity: 0;
+      }      
+      @media (max-width:600px){
+          #symbol {font-size:8pt!important;}
+          #clock {max-width:200px!important; }
+      }
+      @media (min-width:2000px){
+        #symbol {font-size:24pt!important}
+      }
+      @media (max-width: 530px) {
+        #symbol {display: none;}
+      }    
+  
+      #symbol {
+        max-width: 15%;
+        font-family: monospace;
+    
+        animation-name: symbol;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      @keyframes symbol {
+        0% {background-color: red;}
+        100% {background-color: black;}
+      }
+        body       {cursor: url(isolde-1.cur), auto;}
+        body, html {height: 100%;}
+    </style>
+    <script>
+      thing = 0
+      timesClicked = -1
+      const sayThingies = [
+        "You clicked me. Why would you do that? I told you that I <strong style='font-size: 30pt'>definitely</strong> don't do anything!",
+        "You did it again!!!</br><span class='veryBig'>WHY?</span>",
+        "Ok. If you do it again, no more text. For <strong>12 hours.</strong>",
+        "<image src='not-a-big-red-button_files/clock/12.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/1.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/2.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/3.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/4.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/5.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/6.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/7.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/8.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/9.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/10.png' id='clock'/>",
+        "<image src='not-a-big-red-button_files/clock/11.png' id='clock'/>",
+        "How dare you touch my clock!",
+        "That's it. I've got to get you to stop clicking!",
+        "I've got it! Click here to make the button disappear.",
+        "Goodbye. Now I will finally get peace and not have to think of something new to say every time you click me...",
+      ];
+      function fade() {
+        document.getElementById("bigButton").classList.add("fade");
+        setTimeout(() => document.getElementById("bigButton").remove(), 12000);
+      }
+    
+      function whenClicked(thing) {
+      timesClicked = timesClicked+1
+      if (timesClicked === 18) {
+        fade();
+        return sayThingies[timesClicked];
+        }
+      else if (timesClicked > 18) {
+        return sayThingies[18];
+        }
+      else {
+        return sayThingies[timesClicked];
+        }
+      }
+    </script>
+  </head>
+
+<body class="w3-black">
+
+<div id="bigButton" class="w3-red w3-round-large w3-display-middle w3-padding-large" onclick="document.getElementById('bigButton').innerHTML=whenClicked(thing)">
+  <span class="primaryCentered">This is <strong>not</strong> a big, red button.</span>
+  <br>
+  <span>(I <strong class="primaryCentered">definitely</strong> don't do anything.)</span>
+</div>
+
+<a href="index.html">
+  <div class="w3-margin w3-display-bottomleft" id="symbol">
+    <img src="not-a-big-red-button_files/symbol.png" style="width: 100%">
+    <span class="w3-margin">A website by Nico</span>
+    <br>
+    <span class="w3-margin">Version 5.3</span>
+  </div>
+</a>
+
+
+</body></html>
