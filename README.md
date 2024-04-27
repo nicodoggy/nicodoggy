@@ -1,5 +1,5 @@
 # nico-html
-This repository contains my websites that can be found at [nico.computate.org](https://nico.computate.org). The other websites can be found here, or you can use the [index](index.html).
+This repository contains my websites that can be found at [nico.computate.org](https://nico.computate.org). The other websites can be found here, or you can use the [index](https://nico.computate.org).
       <table class="w3-table">
         <tbody>
           <tr>
