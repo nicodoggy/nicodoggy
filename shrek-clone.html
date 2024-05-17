@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="w3-dark-grey">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>shrek-clone.htm</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resizable, draggable, closable, openable windows of Shrek!">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="icon" type="image/gif" href="symbol.gif">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+      .open-sans-shrek-font {
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+      .shrek-bar {font-size: 23pt;}
+      .shrek-button {
+        margin: 30px
+      }
+      .shrek-window {
+        overflow: hidden;
+        cursor: url(pizza.cur), auto;
+      }
+      .shrek-title-bar-text {
+        width: 50%;
+      }
+      .close-button {
+        font-size: 25pt; margin: 5px 5px; width: 50px;
+      }
+      .footer {
+        margin: 30px 0px;
+        opacity: .5;
+      }
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+      body {cursor: url(pizza.cur), auto;}
+      body, html {height: 100%;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+    $( function() {
+      $( ".draggable" ).draggable();
+      $( ".resizable" ).resizable();
+      window.$shrek = $(".shrek").clone();
+    } );
+    </script>
+  </head>
+  <body>
+    <div class="w3-content">
+      <button class="w3-button w3-round-large w3-green w3-hover-yellow w3-xxxlarge w3-padding-large open-sans-shrek-font shrek-button" onclick="var shrek1 = window.$shrek.clone(); $('#shrek-land').append(shrek1); shrek1.draggable(); shrek1.resizable(); ">Shrek</button>
+      <div id="shrek-land" class="w3-row">
+        <div class="draggable resizable w3-white w3-border w3-card-4 shrek w3-quarter ui-draggable ui-draggable-handle ui-resizable shrek-window">
+          <div class="w3-row w3-light-grey">
+            <div class="w3-padding open-sans-shrek-font shrek-bar w3-left shrek-title-bar-text">Shrek</div>
+            <div onclick="this.parentElement.parentElement.remove()" class="w3-pale-red w3-center w3-hover-red w3-round close-button right">&times;</div>
+          </div>
+          <img class="w3-image" src="shrek.png" alt="picture of shrek">
+        <div class="ui-resizable-handle ui-resizable-e"></div><div class="ui-resizable-handle ui-resizable-s"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"></div></div>
+      </div>
+      <div class="footer">
+        <span class="w3-padding w3-black left">A website by Nico</span><span class="w3-padding w3-black right">Version 1.0</span>
+      </div>
+    </div>
+  </body>
+</html>

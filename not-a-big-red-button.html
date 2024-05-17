@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Not a big, red button.</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A webpage that TOTALLY doesn't have a button that does anything.">
     <link rel="stylesheet" href="w3.css">
     <link rel="icon" type="image/gif" href="symbol.gif">
     <style>
@@ -40,7 +42,6 @@
       @media (max-width: 530px) {
         #symbol {display: none;}
       }    
-  
       #symbol {
         max-width: 15%;
         font-family: monospace;
@@ -54,7 +55,7 @@
         0% {background-color: red;}
         100% {background-color: black;}
       }
-        body       {cursor: url(pizza.cur), auto;}
+        body {cursor: url(pizza.cur), auto;}
         body, html {height: 100%;}
     </style>
     <script>
@@ -85,39 +86,34 @@
         document.getElementById("bigButton").classList.add("fade");
         setTimeout(() => document.getElementById("bigButton").remove(), 12000);
       }
-    
       function whenClicked(thing) {
-      timesClicked = timesClicked+1
-      if (timesClicked === 18) {
-        fade();
-        return sayThingies[timesClicked];
+        timesClicked = timesClicked+1
+        if (timesClicked === 18) {
+          fade();
+          return sayThingies[timesClicked];
         }
-      else if (timesClicked > 18) {
-        return sayThingies[18];
+        else if (timesClicked > 18) {
+          return sayThingies[18];
         }
-      else {
-        return sayThingies[timesClicked];
+        else {
+          return sayThingies[timesClicked];
         }
       }
     </script>
   </head>
-
-<body class="w3-black">
-
-<div id="bigButton" class="w3-red w3-round-large w3-display-middle w3-padding-large" onclick="document.getElementById('bigButton').innerHTML=whenClicked(thing)">
-  <span class="primaryCentered">This is <strong>not</strong> a big, red button.</span>
-  <br>
-  <span>(I <strong class="primaryCentered">definitely</strong> don't do anything.)</span>
-</div>
-
-<a href="/">
-  <div class="w3-margin w3-display-bottomleft" id="symbol">
-    <img src="symbol.png" style="width: 100%">
-    <span class="w3-margin">A website by Nico</span>
-    <br>
-    <span class="w3-margin">Version 5.3</span>
-  </div>
-</a>
-
-
-</body></html>
+  <body class="w3-black">
+    <div id="bigButton" class="w3-red w3-round-large w3-display-middle w3-padding-large" onclick="document.getElementById('bigButton').innerHTML=whenClicked(thing)">
+      <span class="primaryCentered">This is <strong>not</strong> a big, red button.</span>
+      <br>
+      <span>(I <strong class="primaryCentered">definitely</strong> don't do anything.)</span>
+    </div>
+    <a href="/">
+      <div class="w3-margin w3-display-bottomleft" id="symbol">
+        <img src="symbol.png" style="width: 100%">
+        <span class="w3-margin">A website by Nico</span>
+        <br>
+        <span class="w3-margin">Version 5.3</span>
+      </div>
+    </a>
+  </body>
+</html>

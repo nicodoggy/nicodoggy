@@ -34,4 +34,4 @@
 
 
 --SPIN STUFF--
- style="animation:w3-spin 2s infinite cubic-bezier(.68,-0.55,.27,1.55);@keyframes w3-spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}"
+ style="animation:w3-spin 2s infinite cubic-bezier(.68,-0.55,.27,1.55);@keyframes w3-spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}"
