@@ -1,24 +1,61 @@
 <!DOCTYPE html>
-<html lang="en-US" dir="ltr">
+<html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+    <title>404 Not Found</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="French flag made out of div elements and CSS.">
-    <link rel="icon" type="image/gif" href="symbol.gif">
-    <title>FLAG!</title>
+    <meta name="description" content="An old 404 Not Found page that used to be used.">
     <link rel="stylesheet" href="w3.css">
+    <link rel="icon" type="image/gif" href="symbol.gif">
     <style>
-      html, body {height: 100%}
-      .w3-row {cursor: none;}
-      div {height: 100%}
+      #symbol {
+        max-width: 20%;
+        font-size: 15pt;
+        animation-name: symbol;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      @keyframes symbol {
+        0% {background-color: red;}
+        100% {background-color: black;}
+      }
+      .header {
+        font-size: 70pt;
+      }
+      @media (max-width: 758px) {
+        #symbol {max-width: 60%}
+      }
+      body {
+        cursor: url(pizza.cur), auto;
+        font-family: monospace;
+        font-size:20pt;
+      }
+      body, html {height: 100%;}
     </style>
   </head>
-  <body>
-    <div class="w3-row">
-      <div class="w3-col m4 w3-blue"></div>
-      <div class="w3-col m4 w3-white"></div>
-      <div class="w3-col m4 w3-red"></div>
+  <body class="w3-black">
+    <div class="w3-content">
+      <div class="w3-center w3-padding">
+        <span class="header">
+          404
+        </span>
+        <hr>
+        <p>
+          This page is not available to you or does not exist. Click <a href="https://nico.computate.org/">here</a> or in the symbol to go to the home page.
+        </p>
+        <center>
+          <a href="/">
+            <div class="w3-margin" id="symbol">
+              <img src="symbol.png" alt="symbol style="width: 100%">
+              <span class="w3-margin">Click to go to the home page.</span>
+              <br>
+              <span class="w3-margin">Version 2.0</span>
+            </div>
+          </a>
+        </center>
+      </div>
     </div>
   </body>
 </html>
