@@ -77,20 +77,3 @@ This repository contains my websites that can be found at [nico.computate.org](h
           </tr>
         </tbody>
       </table>
-      <hr/>
-      <p>
-        Non-HTML items
-      </p>
-      <p><a href="w3.css">w3.css</a> - by Jan Egil and Borge Refsnes, not me (used to add style to my websites;) from <a href="https://w3schools.com/w3css/4/w3.css">w3schools.com</a></p>
-      <p><a href="pizza.cur">pizza.cur</a> - the cursor you are using</p>
-      <p><a href="isolde-1.cur">isolde-1.cur</a> - another cursor you could use if you changed the code</p>
-      <p><a href="shrek.png">shrek.png</a> - a picture of Shrek for <a href="shrek-clone.htm">shrek-clone.htm</a></p>
-      <p><a href="symbol.png">symbol.png</a> - my symbol in Portable Network Graphics form</p>
-      <p><a href="symbol.gif">symbol.gif</a> - my symbol in GIF form</p>
-      <p><a href="stuff.txt">stuff.txt</a> - Some stuff I've used for my websites</p>
-      <div>
-        <img src="symbol.png">
-        <span>A website by Nico</span>
-        <br>
-        <span>Version 4.5</span>
-      </div>
