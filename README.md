@@ -1,6 +1,8 @@
 # nico-html
 This repository contains my websites that can be found at [nico.computate.org](https://nico.computate.org). The other websites can be found here, or you can use the [index](https://nico.computate.org).
 
+## HTML Items
+
 <table>
   <tbody>
     <tr>
@@ -77,3 +79,13 @@ This repository contains my websites that can be found at [nico.computate.org](h
     </tr>
   </tbody>
 </table>
+
+## Non HTML Items
+
+<p><a href="w3.css" class="w3-hover-white">w3.css</a> - by Jan Egil and Borge Refsnes, not me (used to add style to my websites;) from <a href="https://w3schools.com/w3css/4/w3.css">w3schools.com</a></p>
+<p><a href="pizza.cur" class="w3-hover-white">pizza.cur</a> - the cursor you are using</p>
+<p><a href="isolde-1.cur" class="w3-hover-white">isolde-1.cur</a> - another cursor you could use if you changed the code</p>
+<p><a href="shrek.png" class="w3-hover-white">shrek.png</a> - a picture of Shrek for <a href="shrek-clone.htm" class="w3-hover-white">shrek-clone.htm</a></p>
+<p><a href="symbol.png" class="w3-hover-white">symbol.png</a> - my symbol in Portable Network Graphics form</p>
+<p><a href="symbol.gif" class="w3-hover-white">symbol.gif</a> - my symbol in GIF form</p>
+<p><a href="stuff.txt" class="w3-hover-white">stuff.txt</a> - Some stuff I've used for my websites</p>
