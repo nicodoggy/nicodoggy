@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>template.html</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A template that I think I used.">
+    <link rel="stylesheet" href="../w3.css">
+    <link rel="icon" type="image/gif" href="../symbol.gif">
+    <style>
+      #symbol {
+        width: 40%;
+        
+        animation-name: symbol;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      @keyframes symbol {
+        0% {background-color: red;}
+        100% {background-color: black;}
+      }
+      .header {
+        font-size: 30pt;
+        margin: none;
+      }
+      .medium-text {
+        font-size: 15pt;
+      }
+      body {cursor: url(pizza.cur), auto; font-family: monospace}
+      body, html {height: 100%;}
+    </style>
+  </head>
+  <body class="w3-black">
+    <div class="w3-content w3-padding">
+      <h1 class="header">Welcome to the clock directory.</h1>
+      <p class="medium-text">This folder is used to hold the clock images for <a href="../not-a-big-red-button.html">not-a-big-red-button.html</a>.</p>
+      <p>
+      Type "/12.png", for example, after the clock directory in the url to get a clock.
+      </p>
+      <a href="/">
+        <div class="w3-margin" id="symbol">
+          <img src="../symbol.png" alt="symbol" style="width: 100%">
+          <span class="w3-margin">A website by Nico</span>
+          <br/>
+          <span class="w3-margin">Version 1.0</span>
+        </div>
+      </a>
+    </div>
+  </body>
+</html>
