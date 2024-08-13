@@ -9,6 +9,8 @@
     <meta name="description" content="insert description here" />
     <title>Insert title here</title>
   </head>
+  <body>
+  </body>
 </html>
 
 
@@ -21,6 +23,9 @@
 
 
 --SHOELACE STUFF--
+    <script type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js">
+    </script>
     <link rel="stylesheet" media="(prefers-color-scheme:light)"
       href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css"
     />
@@ -28,10 +33,6 @@
       href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/dark.css"
       onload="document.documentElement.classList.add('sl-theme-dark');"
     />
-    <script type="module"
-      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js">
-    </script>
-
 
 --SPIN STUFF--
  style="animation:w3-spin 2s infinite cubic-bezier(.68,-0.55,.27,1.55);@keyframes w3-spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}"

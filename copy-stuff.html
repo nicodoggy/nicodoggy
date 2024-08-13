@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="copy characters like em dash and stuff" />
+    <title>copy stuff</title>
+    <link rel="icon" type="image/gif" href="symbol.gif">
+
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/themes/default.css" />
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/webawesome.loader.js"></script>
+
+    <style>
+      #grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--wa-space-m);
+        padding: var(--wa-space-m);
+        background-color: var(--wa-color-surface-lowered);
+        box-shadow: inset var(--wa-shadow-s);
+        border-radius: var(--wa-border-radius-s);
+      }
+      #grid-container > div {
+        display: grid;
+        grid-template-columns: 1rem 5rem min-content 5rem auto;
+        align-items: center;
+        column-gap: var(--wa-space-m);
+        padding-inline: var(--wa-space-m);
+        padding-block: var(--wa-space-2xs);
+        background-color: var(--wa-color-surface-raised);
+        box-shadow: var(--wa-shadow-s);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grid-container">
+      <div>
+        <div>
+          &mdash;
+        </div>
+        <div>
+          em dash
+        </div>
+        <wa-copy-button value="&mdash;" tooltip-placement="right"></wa-copy-button>
+        <div>
+          &amp;mdash;
+        </div>
+        <a href="https://www.merriam-webster.com/grammar/em-dash-en-dash-how-to-use" target="_blank">usage</a>
+      </div>
+
+      <div>
+        <div>
+          &ndash;
+        </div>
+        <div>
+          en dash
+        </div>
+        <wa-copy-button value="&ndash;" tooltip-placement="right"></wa-copy-button>
+        <div>
+          &amp;ndash;
+        </div>
+        <a href="https://www.merriam-webster.com/grammar/em-dash-en-dash-how-to-use" target="_blank">usage</a>
+      </div>
+  </body>
+</html>
