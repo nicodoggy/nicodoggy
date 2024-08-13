@@ -31,6 +31,14 @@ This repository contains my websites that can be found at [nico.computate.org](h
     </tr>
     <tr>
       <td>
+        <p><a href="copy-stuff.html">copy-stuff.html</a></p>
+      </td>
+      <td>
+        Copy some characters that aren't on your keyboard.
+      </td>
+    </tr>
+    <tr>
+      <td>
         <p><a href="shrek-clone.html">shrek-clone.html</a></p>
       </td>
       <td>
