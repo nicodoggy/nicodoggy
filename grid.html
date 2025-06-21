@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid test</title>
+
+    <style>
+      @keyframes pulse {
+        50% {
+          background-color: lime;
+        }
+      }
+
+      :root {
+        font-family: consolas, monospace;
+      }
+
+      .pulse {
+        animation: pulse linear 1s;
+      }
+
+      .grid {
+        display: grid;
+      }
+      .subgrid {
+        grid-template-columns: subgrid;
+      }
+      .col-span-2 {
+        grid-column: span 2;
+      }
+      .col-span-3 {
+        grid-column: span 3;
+      }
+      .icon-button {
+        font-size: 1.5rem;
+        appearance: none;
+      }
+      .button-active {
+        background-color: cornflowerblue;
+        border-color: dodgerblue;
+      }
+      .item-list {
+        background-color: bisque;
+        padding: .5rem;
+        gap: .5rem;
+        grid-template-columns: auto auto min-content;
+        > * {
+          background-color: aqua;
+          padding: .3rem;
+          display: grid;
+          grid-template-columns: subgrid;
+          > * {
+            align-content: center;
+            background-color: aquamarine;
+          }
+        }
+      }
+    </style>
+    <script type="module">
+      function setupEditButton(value, index, array) {
+
+        const titles = document.querySelectorAll(`#item-${index} .title`);
+        const descriptions = document.querySelectorAll(`#item-${index} .description`);
+
+        value.addEventListener('click', () => {
+
+          value.classList.add('button-active');
+
+          titles.forEach(title => {
+            title.setAttribute('contenteditable', '');
+            title.style.backgroundColor = 'lightgreen';
+
+            title.classList.remove('pulse');
+            title.classList.add('pulse');
+            setTimeout(() => title.classList.remove('pulse'), 1000)
+
+            title.focus()
+          });
+
+          descriptions.forEach(description => {
+            description.setAttribute('contenteditable', '');
+            description.style.backgroundColor = 'lightgreen';
+          });
+
+        });
+      }
+
+      const editButtons = document.querySelectorAll('.edit-button')
+
+      editButtons.forEach(setupEditButton)
+    </script>
+  </head>
+  <body>
+    <div class="grid item-list">
+      <div id="item-0" class="col-span-3">
+        <a href="https://example.com" class="grid subgrid col-span-2">
+          <div class="title">long long long long long name</div>
+          <div class="description">long long long long long long long long long long long long long long long long long long long long description</div>
+        </a>
+        <div><button class="icon-button edit-button">✎</button></div>
+      </div>
+      <div id="item-1" class="col-span-3">
+        <div class="title">short name</div>
+        <div class="description">short short short short short short short description</div>
+        <div><button class="icon-button edit-button">✎</button></div>
+      </div>
+      <div id="item-2" class="col-span-3">
+        <div class="title">short name</div>
+        <div class="description">short short short short short short short description</div>
+        <div><button class="icon-button edit-button">✎</button></div>
+      </div>
+      <div id="item-3" class="col-span-3">
+        <div class="title">short name</div>
+        <div class="description">short short short short short short short description</div>
+        <div><button class="icon-button edit-button">✎</button></div>
+      </div>
+    </div>
+  </body>
+</html>

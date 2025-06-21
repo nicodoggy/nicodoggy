@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en-US" class="wa-theme-default-dark">
+<html lang="en-US" class="wa-dark">
 
   <head>
     <meta charset="utf-8" />
@@ -9,8 +9,10 @@
     <title>copy stuff</title>
     <link rel="icon" type="image/gif" href="symbol.gif">
 
-    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/themes/default.css" />
-    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/webawesome.loader.js"></script>
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/themes/default.css" />
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/webawesome.css" />
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/webawesome.loader.js"></script>
+
 
     <style>
       html, body {margin: 0; padding: 0;}
@@ -38,8 +40,7 @@
         background-color: var(--wa-color-surface-lowered);
       }
       .character-preview {
-        font-size: var(--wa-font-size-l);
-        padding: var(--wa-space-xs);
+        padding-inline: var(--wa-space-xs);
         border-radius: var(--wa-border-radius-s);
       }
     </style>
@@ -47,30 +48,26 @@
   <body>
     <div id="grid-container">
       <div>
-        <div class="character-preview">
-          &mdash;
-        </div>
+        <div class="character-preview">&mdash;</div>
         <div>
           em dash
         </div>
         <wa-copy-button value="&mdash;" tooltip-placement="right"></wa-copy-button>
-        <div>
+        <code>
           &amp;mdash;
-        </div>
+        </code>
         <a href="https://www.merriam-webster.com/grammar/em-dash-en-dash-how-to-use" target="_blank">usage</a>
       </div>
 
       <div>
-        <div class="character-preview">
-          &ndash;
-        </div>
+        <div class="character-preview">&ndash;</div>
         <div>
           en dash
         </div>
         <wa-copy-button value="&ndash;" tooltip-placement="right"></wa-copy-button>
-        <div>
+        <code>
           &amp;ndash;
-        </div>
+        </code>
         <a href="https://www.merriam-webster.com/grammar/em-dash-en-dash-how-to-use" target="_blank">usage</a>
       </div>
   </body>

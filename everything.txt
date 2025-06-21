@@ -1,0 +1,54 @@
+This file shows (probably) everything in this website. I recommend you instead look at the source code at https://github.com/nicodoggy/nicodoggy
+
+├── .git
+│   ├── branches
+│   ├── hooks
+│   ├── info
+│   ├── description
+│   ├── config
+│   ├── objects
+│   ├── HEAD
+│   ├── refs
+│   ├── packed-refs
+│   ├── logs
+│   ├── index
+├── 404.html
+├── CNAME
+├── LICENSE
+├── README.md
+├── clock
+│   ├── 1.png
+│   ├── 10.png
+│   ├── 11.png
+│   ├── 12.png
+│   ├── 2.png
+│   ├── 3.png
+│   ├── 4.png
+│   ├── 5.png
+│   ├── 6.png
+│   ├── 7.png
+│   ├── 8.png
+│   ├── 9.png
+│   ├── index.html
+├── copy-stuff.html
+├── flag.html
+├── i-do-not-know.html
+├── isolde-1.cur
+├── not-a-big-red-button.html
+├── not_found.html
+├── pizza.cur
+├── qr.html
+├── shrek.png
+├── stuff.txt
+├── symbol.gif
+├── symbol.html
+├── symbol.png
+├── template.html
+├── index-old.html
+├── index.html
+├── awesome-hover-effect.html
+├── grid.html
+├── shrek-windows.html
+├── index-very-old.html
+├── everything.txt
+├── everything.py

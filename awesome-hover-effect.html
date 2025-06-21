@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome hover effects!!!</title>
+
+    <style>
+      .hover-area {
+        padding: 1rem;
+        background-color: burlywood;
+
+        > * {
+          padding: 1rem;
+        }
+
+        * {
+          outline-offset: var(--initial-offset);
+          &:hover {
+            transition: outline-offset var(--offset-duration), outline var(--outline-duration);
+            outline: var(--outline-style) var(--outline-size);
+            outline-offset: var(--final-offset);
+          }
+        }
+      }
+
+      #grid {
+        display: grid;
+        gap: 1rem;
+        > * {
+          display: grid;
+          grid-template-columns: subgrid;
+          grid-column: span 3;
+        }
+      }
+    </style>
+    <script type="module">
+      const initialOffsetInitialValue = -10;
+      const finalOffsetInitialValue = 6;
+
+      const offsetDurationInitialValue = 1;
+      const outlineDurationInitialValue = 1;
+
+      const outlineSizeInitialValue = 7;
+      const outlineStyleInitialValue = 'solid';
+
+
+      document.documentElement.style.setProperty('--initial-offset', initialOffsetInitialValue + 'px');
+      document.documentElement.style.setProperty('--final-offset', finalOffsetInitialValue + 'px');
+
+      document.documentElement.style.setProperty('--offset-duration', offsetDurationInitialValue + 's');
+      document.documentElement.style.setProperty('--outline-duration', outlineDurationInitialValue + 's');
+
+      document.documentElement.style.setProperty('--outline-size', outlineSizeInitialValue + 'px');
+      document.documentElement.style.setProperty('--outline-style', outlineStyleInitialValue);
+
+
+      const initialOffsetInput = document.querySelector('#initial-offset');
+      const finalOffsetInput = document.querySelector('#final-offset');
+
+      const offsetDurationInput = document.querySelector('#offset-duration');
+      const outlineDurationInput = document.querySelector('#outline-duration');
+
+      const outlineSizeInput = document.querySelector('#outline-size');
+      const outlineStyleInput = document.querySelector('#outline-style');
+
+
+      const initialOffsetInputLabel = document.querySelector('label[for="#initial-offset"]');
+      const finalOffsetInputLabel = document.querySelector('label[for="#final-offset"]');
+
+      const offsetDurationInputLabel = document.querySelector('label[for="#offset-duration"]');
+      const outlineDurationInputLabel = document.querySelector('label[for="#outline-duration"]');
+
+      const outlineSizeInputLabel = document.querySelector('label[for="#outline-size"]');
+      const outlineStyleInputLabel = document.querySelector('label[for="#outline-style"]');
+
+
+      initialOffsetInput.value = initialOffsetInitialValue;
+      finalOffsetInput.value = finalOffsetInitialValue;
+
+      offsetDurationInput.value = offsetDurationInitialValue;
+      outlineDurationInput.value = outlineDurationInitialValue;
+
+      outlineSizeInput.value = outlineSizeInitialValue;
+      outlineStyleInput.value = outlineStyleInitialValue;
+
+
+      initialOffsetInputLabel.textContent = initialOffsetInitialValue + 'px';
+      finalOffsetInputLabel.textContent = finalOffsetInitialValue + 'px';
+
+      offsetDurationInputLabel.textContent = offsetDurationInitialValue + 's';
+      outlineDurationInputLabel.textContent = outlineDurationInitialValue + 's';
+
+      outlineSizeInputLabel.textContent = outlineSizeInitialValue + 'px';
+      outlineStyleInputLabel.textContent = outlineStyleInitialValue;
+
+
+      initialOffsetInput.addEventListener('input', (event) => {document.documentElement.style.setProperty('--initial-offset', event.target.value + 'px'); initialOffsetInputLabel.textContent = event.target.value + 'px';});
+      finalOffsetInput.addEventListener('input', (event) => {document.documentElement.style.setProperty('--final-offset', event.target.value + 'px'); finalOffsetInputLabel.textContent = event.target.value + 'px';});
+
+      offsetDurationInput.addEventListener('input', (event) => {document.documentElement.style.setProperty('--offset-duration', event.target.value + 's'); offsetDurationInputLabel.textContent = event.target.value + 's';});
+      outlineDurationInput.addEventListener('input', (event) => {document.documentElement.style.setProperty('--outline-duration', event.target.value + 's'); outlineDurationInputLabel.textContent = event.target.value + 's';});
+
+      outlineSizeInput.addEventListener('input', (event) => {document.documentElement.style.setProperty('--outline-size', event.target.value + 'px'); outlineSizeInputLabel.textContent = event.target.value + 'px';});
+      outlineStyleInput.addEventListener('input', (event) => {document.documentElement.style.setProperty('--outline-style', event.target.value); outlineStyleInputLabel.textContent = event.target.value;});
+    </script>
+  </head>
+  <body>
+
+    <div id="grid">
+      <div>
+        <label for="#initial-offset"></label>
+        <input min="-100" max="100" type="range" id="initial-offset"/>
+        <span>
+          <b>initial offset</b>
+          To control what the initial offset of the outline is before the animation is triggered.
+        </span>
+      </div>
+      <div>
+        <label for="#final-offset"></label>
+        <input min="-100" max="100" type="range" id="final-offset"/>
+        <span>
+          <b>final offset</b>
+          To control the final offset of the outline after the animation.
+        </span>
+      </div>
+
+      <div>
+        <label for="#offset-duration"></label>
+        <input min="0" max="10" type="range" id="offset-duration"/>
+        <span>
+          <b>offset duration</b>
+          To control the time, in seconds, it takes for the offset of the outline to increase to <b>final offset</b>.
+        </span>
+      </div>
+      <div>
+        <label for="#outline-duration"></label>
+        <input min="0" max="10" type="range" id="outline-duration"/>
+        <span>
+          <b>outline duration</b>
+          To control the time, in seconds, it takes for the size of the outline to increase to the <b>outline size</b>.
+        </span>
+      </div>
+
+      <div>
+        <label for="#outline-size"></label>
+        <input min="1" max="100" type="range" id="outline-size"/>
+        <span>
+          <b>outline size</b>
+          To control how large the size the outline gets.
+        </span>
+      </div>
+
+      <div>
+        <label for="#outline-style"></label>
+        <select name="outline styles" id="outline-style">
+          <option value="none">none</option>
+          <option value="dotted">dotted</option>
+          <option value="solid">solid</option>
+          <option value="groove">groove</option>
+          <option value="inset">inset</option>
+        </select>
+        <span>
+          <b>outline style</b>
+          To control the style of the outline.
+        </span>
+      </div>
+
+    </div>
+
+    <hr />
+
+    <div class="hover-area">
+      <div>
+        <a href="#">Hover me!</a>
+      </div>
+      <div>
+        <button>Hover me!</button>
+      </div>
+    </div>
+
+  </body>
+</html>

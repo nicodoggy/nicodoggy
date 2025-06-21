@@ -1,171 +1,232 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en" class="wa-cloak">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="nico.computate.org has some stuff: a qr code generator, shrek stuff, and more.">
-    <link rel="stylesheet" href="w3.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
-    <title>Index of nico.computate.org</title>
-    <link rel="icon" type="image/gif" href="symbol.gif">
+    <title>nico.computate.org</title>
+    <link rel="icon" href="symbol.gif">
+
+    <!-- webawesome loader script -->
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/webawesome.loader.js"></script>
+
     <style>
-      body {
+      /* define layer for webawesome styles */
+      @layer webawesome;
+      /* import to webawesome layer */
+      @import url(https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/themes/default.css) layer(webawesome);
+      @import url(https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/webawesome.css) layer(webawesome);
+
+      /* custom styles */
+      :root {
+        --space-scale: 2;
+        --content-gap-l: calc(var(--space-scale) * var(--wa-space-2xl));
+        --content-gap-s: calc(var(--space-scale) * var(--wa-space-s));
+      }
+      wa-page {
+        > main {
+          max-width: 80ch;
+          margin-inline: auto;
+
+          > .content {
+            > *:not(:first-child) {
+              margin-block-start: var(--content-gap-l);
+              > *:not(:first-child) {
+                margin-block-start: var(--content-gap-s);
+              }
+            }
+          }
+          .stuff-grid {
+            background-color: light-dark(color-mix(in oklab, var(--wa-color-gray-90), white), var(--wa-color-gray-10));
+            padding: var(--wa-space-m);
+            border-radius: var(--wa-border-radius-m);
+            overflow-x: scroll;
+
+            grid-template-columns: repeat(auto-fit, minmax(min(20ch, 100%), 1ch));
+            wa-divider {
+              grid-column: 1 / -1;
+            }
+          }
+          .not-a-big-red-button {
+            color: white;
+            padding: var(--wa-space-s);
+            border-radius: var(--wa-space-xs);
+            text-decoration: none;
+
+            --button-color: var(--wa-color-red-50);
+            background-color: var(--button-color);
+            &:hover {background-color: color-mix(in oklab, var(--button-color), var(--wa-color-mix-hover))}
+            &:active {background-color: color-mix(in oklab, var(--button-color), var(--wa-color-mix-active))}
+          }
+        }
+        > nav {
+          min-width: 300px;
+          border-inline-end: var(--wa-border-style) var(--wa-border-width-s) var(--wa-color-surface-border);
+        }
+        .header-home-page-link {
+          text-decoration: none;
+        }
+        .header-home-page-link-header {
+          margin: 0;
+        }
+
+        &[view=desktop] {
+          font-size: var(--wa-font-size-l);
+        }
+        &[view=mobile] {
+          h1 {font-size: var(--wa-font-size-xl);}
+          h3 {font-size: var(--wa-font-size-l);}
+          .wa-heading-m {font-size: var(--wa-font-size-m);}
+        }
+
+        > header {
+          padding-block: var(--wa-space-s);
+        }
+        .center {
+          text-align: center;
+        }
+        .justify-center {
+          justify-content: center;
+        }
+        .grid {
+          display: grid;
+        }
         cursor: url(pizza.cur), auto;
       }
-      body, html {height: 100%;}
-      table, th, td {
-        border: 1px solid white;
-        border-collapse: collapse; 
-      }
-      #symbol {
-        max-width: 30%;
-        min-width: 200px;
-        animation-name: symbol;
-        animation-duration: 6s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      }
-      @keyframes symbol {
-        0% {background-color: red;}
-        100% {background-color: black;}
-      }
-      .title {
-        font-size: 20pt;
-      }
-      .subTitle {font-size: 15pt;}
-      a:hover {
-        color:#000!important;background-color:#fff!important; 
-      }
-      td a:hover {
-        color:#fff!important;background-color:#000!important; 
-      }
-      td:hover {
-        color:#000!important;background-color:#fff!important;
-      }
     </style>
+    <!-- theme toggle -->
+    <script type="module">
+      const colorSchemeStorageKey = 'colorScheme';
+      const colorSchemeLight = 'light'
+      const colorSchemeDark = 'dark'
+      const colorScheme = localStorage.getItem(colorSchemeStorageKey);
+      if (colorScheme === null) {
+        localStorage.setItem(colorSchemeStorageKey, colorSchemeLight);
+      }
+      else if (colorScheme === colorSchemeDark) {
+        document.documentElement.classList.add('wa-dark');
+      }
+
+      const lightButton = document.getElementById('light-button');
+      const darkButton = document.getElementById('dark-button');
+      lightButton.addEventListener('click', () => {document.documentElement.classList.remove('wa-dark'); localStorage.setItem(colorSchemeStorageKey, colorSchemeLight)})
+      darkButton.addEventListener('click', () => {document.documentElement.classList.add('wa-dark'); localStorage.setItem(colorSchemeStorageKey, colorSchemeDark)})
+    </script>
   </head>
-  <body class="w3-black">
-    <div class="w3-content w3-padding">
-      <h1 class="title w3-padding">Index of <a href="/">nico.computate.org</a></h1>
-      <sl-tab-group>
-        <sl-tab slot="nav" panel="html"><h4>HTML Items</h4></sl-tab>
-        <sl-tab slot="nav" panel="non-html"><h4>Non-HTML items</h4></sl-tab>
-        <sl-tab-panel name="html">
-          <p class="subTitle">
-            HTML items
-            <table class="w3-table">
-              <tbody>
-                <tr>
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    Description
-                  </th>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="not-a-big-red-button.html"><div class="w3-red w3-round w3-padding w3-hover-white">not-a-big-red-button.html</div></a>
-                  </td>
-                  <td>
-                    A webpage that TOTALLY doesn't have a button that does anything.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p><a href="qr.html">qr.html</a></p>
-                  </td>
-                  <td>
-                    A handy QR Code generator. Put in a string and it will generate a QR Code. Max length of string is 255 characters. Created with <a href="https://shoelace.style">Shoelace</a>.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p><a href="copy-stuff.html">copy-stuff.html</a></p>
-                  </td>
-                  <td>
-                    Copy some characters that aren't on your keyboard.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p><a href="shrek-clone.html">shrek-clone.html</a></p>
-                  </td>
-                  <td>
-                    Resizable, draggable, closable, openable windows of Shrek!
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p><a href="flag.html">flag.html</a></p>
-                  </td>
-                  <td>
-                    A French flag made out of div elements and CSS.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p><a href="i-do-not-know.html">i-do-not-know.html</a></p>
-                  </td>
-                  <td>
-                    I do not know what to put for a description.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p><a href="symbol.html">symbol.html</a></p>
-                  </td>
-                  <td>
-                    My symbol in HTML form.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p><a href="template.html">template.html</a></p>
-                  </td>
-                  <td>
-                    A template that I think I used.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p><a href="404.html">404.html</a></p>
-                  </td>
-                  <td>
-                    The 404 Not Found page.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </p>
-          <div id="symbol">
-            <img src="symbol.png" style="width: 100%">
-            <span class="w3-margin">A website by Nico</span>
-            <br>
-            <span class="w3-margin">Version 5.0<br>Created with <a href="https://shoelace.style">Shoelace</a> and <a href="https://w3schools.com/w3css">w3.css</a><br/>If for some reason this site doesn't work, you can access a non-shoelace version <a href="index-old.html">here</a>.</span>
-          </div>
-        </sl-tab-panel>
-        <sl-tab-panel name="non-html">
-          <p class="subTitle">
-            Non-HTML items
-          </p>
-          <p><a href="w3.css">w3.css</a> - by Jan Egil and Borge Refsnes, not me (used to add style to my websites; I changed one or two things) from <a href="https://w3schools.com/w3css/4/w3.css">w3schools.com</a></p>
-          <p><a href="pizza.cur">pizza.cur</a> - the cursor you are using</p>
-          <p><a href="isolde-1.cur">isolde-1.cur</a> - another cursor you could use if you changed the code</p>
-          <p><a href="shrek.png">shrek.png</a> - a picture of Shrek for <a href="shrek-clone.htm">shrek-clone.htm</a></p>
-          <p><a href="symbol.png">symbol.png</a> - my symbol in Portable Network Graphics form</p>
-          <p><a href="symbol.gif">symbol.gif</a> - my symbol in GIF form</p>
-          <p><a href="stuff.txt">stuff.txt</a> - Some stuff I've used for my websites</p>
-          <div id="symbol">
-            <img src="symbol.png" style="width: 100%">
-            <span class="w3-margin">A website by Nico</span>
-            <br>
-            <span class="w3-margin">Version 5.0<br/>Created with <a href="https://shoelace.style">Shoelace</a> and <a href="https://w3schools.com/w3css">w3.css</a><br/>If for some reason this site doesn't work, you can access a non-shoelace version <a href="index-old.html">here</a>.</span>
-          </div>
-        </sl-tab-panel>
-      </sl-tab-group>
-    </div>
+  <body>
+    <wa-page>
+      <header slot="header">
+        <div class="wa-cluster">
+          <wa-icon-button data-toggle-nav name="bars"></wa-icon-button>
+          <h4 class="header-home-page-link-header"><a href="/" class="header-home-page-link"><code>nico.computate.org</code></a></h4>
+        </div>
+        <wa-button-group size="small">
+          <wa-button pill appearance="filled outlined" class="wa-light" id="light-button">light</wa-button>
+          <wa-button pill appearance="filled outlined" class="wa-dark" id="dark-button">dark</wa-button>
+        </wa-button-group>
+      </header>
+      <nav slot="navigation">
+        <div class="wa-stack">
+          <a href="#web-pages">Web Pages</a>
+          <a href="#html-demos">HTML Demos</a>
+          <wa-divider></wa-divider>
+          <a href="index-old.html">Old index</a>
+          <a href="index-very-old.html">Very old index</a>
+          <wa-divider></wa-divider>
+          <a href="https://github.com/nicodoggy/nicodoggy">Github repository</a>
+        </div>
+      </nav>
+      <main>
+        <div class="content">
+          <hgroup>
+            <h1 class="center">
+              <code>
+                nico.computate.org
+              </code>
+            </h1>
+            <p class="wa-caption-xl center">
+              a website of stuff
+            </p>
+          </hgroup>
+
+          <section>
+            <h3 id="web-pages">Web pages</h3>
+
+            <div class="grid stuff-grid wa-gap-l">
+              <div class="wa-heading-m">Name</div>
+              <div class="wa-heading-m only-desktop">Location</div>
+              <div class="wa-heading-m">Description</div>
+
+              <wa-divider></wa-divider>
+
+              <a class="not-a-big-red-button wa-cluster justify-center" href="not-a-big-red-button.html">not a big red button</a>
+              <div><code>not-a-big-red-button.html</code></div>
+              <div>A webpage that does <i>not</i> have a button that does anything.</div>
+
+              <wa-divider></wa-divider>
+
+              <a href="qr.html">qr code generator</a>
+              <div><code>qr.html</code></div>
+              <div>A handy QR Code generator. Put in a string and it will generate a QR Code. Max length of string is 255 characters. Made with <a href="https://shoelace.style">Shoelace</a>.</div>
+
+              <wa-divider></wa-divider>
+
+              <a href="shrek-windows.html">shrek windows</a>
+              <div><code>shrek-windows.html</code></div>
+              <div>Resizable, draggable, closable, openable windows of Shrek!</div>
+
+              <wa-divider></wa-divider>
+
+              <a href="copy-stuff.html">copy stuff</a>
+              <div><code>copy-stuff.html</code></div>
+              <div>Copy some characters that I use a lot that aren't on <span class="wa-cluster wa-gap-xs"><kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd><kbd>R</kbd><kbd>T</kbd><kbd>Y</kbd></span> keyboards, such as the em dash (—), and the en dash (–).</div>
+              <wa-divider></wa-divider>
+
+              <a href="flag.html">flag.html</a>
+              <div><code>flag.html</code></div>
+              <div>A French flag made out of <code>div</code> elements and CSS.</div>
+            </div>
+          </section>
+
+          <section>
+            <h3 id="html-demos">HTML demos</h3>
+
+            <div class="grid stuff-grid wa-gap-m">
+              <div class="wa-heading-m">Name</div>
+              <div class="wa-heading-m">Location</div>
+              <div class="wa-heading-m">Description</div>
+
+              <wa-divider></wa-divider>
+
+              <a href="grid.html"><code>grid.html</code></a>
+              <div><code>grid.html</code></div>
+              <div>A grid layout featuring smart columns using a CSS subgrid technique.</div>
+
+              <wa-divider></wa-divider>
+
+              <a href="awesome-hover-effect.html"><code>awesome-hover-effect.html</code></a>
+              <div><code>grid.html</code></div>
+              <div>Shows a customizable hover effect.</div>
+
+              </div>
+          </section>
+          <section>
+            <p>
+              To see a more complete list of stuff, do one of the following:
+            </p>
+            <ul>
+              <li>see the <a href="index-old.html">old index</a></li>
+              <li>see the <a href="index-very-old.html">very old index</a> <i>(this one has no web components)</i></li>
+            </ul>
+            <p>
+              To see everything on this website, do one of the following:
+            </p>
+            <ul>
+              <li>(recommended) view it on <a href="https://github.com/nicodoggy/nicodoggy">Github</a></li>
+              <li>(will <em>probably</em> show everything) look at <a href="everything.txt">everything.txt</a></li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </wa-page>
   </body>
 </html>

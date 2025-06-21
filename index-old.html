@@ -4,9 +4,11 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="this is an older index for finding the other pages on this website in case the shoelace one doesn't work; the old index's description says: nico.computate.org has some stuff: a qr code generator, shrek stuff, and more.">
-    <link rel="stylesheet" href="w3.css">
-    <title>Old index of nico.computate.org</title>
+    <meta name="description" content="nico.computate.org has some stuff: a qr code generator, shrek stuff, and more.">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+    <title>Index of nico.computate.org</title>
     <link rel="icon" type="image/gif" href="symbol.gif">
     <style>
       body {
@@ -33,7 +35,6 @@
         font-size: 20pt;
       }
       .subTitle {font-size: 15pt;}
-      .without {font-weight: 600; font-style: italic;}
       a:hover {
         color:#000!important;background-color:#fff!important; 
       }
@@ -48,109 +49,122 @@
   <body class="w3-black">
     <div class="w3-content w3-padding">
       <h1 class="title w3-padding">Index of <a href="/">nico.computate.org</a></h1>
-      <p class="subTitle">
-        HTML items
-        <table class="w3-table">
-          <tbody>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Description
-              </th>
-            </tr>
-            <tr>
-              <td>
-                <a href="not-a-big-red-button.html"><div class="w3-red w3-round w3-padding w3-hover-white">not-a-big-red-button.html</div></a>
-              </td>
-              <td>
-                A webpage that TOTALLY doesn't have a button that does anything.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><a href="qr.html">qr.html</a></p>
-              </td>
-              <td>
-                A handy QR Code generator. Put in a string and it will generate a QR Code. Max length of string is 255 characters. Created with <a href="https://shoelace.style">Shoelace</a>.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><a href="copy-stuff.html">copy-stuff.html</a></p>
-              </td>
-              <td>
-                Copy some characters that aren't on your keyboard.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><a href="shrek-clone.html">shrek-clone.html</a></p>
-              </td>
-              <td>
-                Resizable, draggable, closable, openable windows of Shrek!
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><a href="flag.html">flag.html</a></p>
-              </td>
-              <td>
-                A French flag made out of div elements and CSS.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><a href="i-do-not-know.html">i-do-not-know.html</a></p>
-              </td>
-              <td>
-                I do not know what to put for a description.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><a href="symbol.html">symbol.html</a></p>
-              </td>
-              <td>
-                My symbol in HTML form.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><a href="template.html">template.html</a></p>
-              </td>
-              <td>
-                A template that I think I used.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><a href="404.html">404.html</a></p>
-              </td>
-              <td>
-                The 404 Not Found page.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </p>
-      <p class="subTitle">
-        Non-HTML items
-      </p>
-      <p><a href="w3.css">w3.css</a> - by Jan Egil and Borge Refsnes, not me (used to add style to my websites; I changed one or two things) from <a href="https://w3schools.com/w3css/4/w3.css">w3schools.com</a></p>
-      <p><a href="pizza.cur">pizza.cur</a> - the cursor you are using</p>
-      <p><a href="isolde-1.cur">isolde-1.cur</a> - another cursor you could use if you changed the code</p>
-      <p><a href="shrek.png">shrek.png</a> - a picture of Shrek for <a href="shrek-clone.htm">shrek-clone.htm</a></p>
-      <p><a href="symbol.png">symbol.png</a> - my symbol in Portable Network Graphics form</p>
-      <p><a href="symbol.gif">symbol.gif</a> - my symbol in GIF form</p>
-      <p><a href="stuff.txt">stuff.txt</a> - Some stuff I've used for my websites</p>
-      <div id="symbol">
-        <img src="symbol.png" style="width: 100%">
-        <span class="w3-margin">A website by Nico</span>
-        <br>
-        <span class="w3-margin">Version 5.0<br/>Created <span class="without">without</span> <a href="https://shoelace.style">Shoelace</a>; created with <a href="https://w3schools.com/w3css">w3.css</a></span>
-      </div>
+      <sl-tab-group>
+        <sl-tab slot="nav" panel="html"><h4>HTML Items</h4></sl-tab>
+        <sl-tab slot="nav" panel="non-html"><h4>Non-HTML items</h4></sl-tab>
+        <sl-tab-panel name="html">
+          <p class="subTitle">
+            HTML items
+            <table class="w3-table">
+              <tbody>
+                <tr>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Description
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="not-a-big-red-button.html"><div class="w3-red w3-round w3-padding w3-hover-white">not-a-big-red-button.html</div></a>
+                  </td>
+                  <td>
+                    A webpage that TOTALLY doesn't have a button that does anything.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><a href="qr.html">qr.html</a></p>
+                  </td>
+                  <td>
+                    A handy QR Code generator. Put in a string and it will generate a QR Code. Max length of string is 255 characters. Created with <a href="https://shoelace.style">Shoelace</a>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><a href="copy-stuff.html">copy-stuff.html</a></p>
+                  </td>
+                  <td>
+                    Copy some characters that aren't on your keyboard.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><a href="shrek-clone.html">shrek-clone.html</a></p>
+                  </td>
+                  <td>
+                    Resizable, draggable, closable, openable windows of Shrek!
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><a href="flag.html">flag.html</a></p>
+                  </td>
+                  <td>
+                    A French flag made out of div elements and CSS.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><a href="i-do-not-know.html">i-do-not-know.html</a></p>
+                  </td>
+                  <td>
+                    I do not know what to put for a description.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><a href="symbol.html">symbol.html</a></p>
+                  </td>
+                  <td>
+                    My symbol in HTML form.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><a href="template.html">template.html</a></p>
+                  </td>
+                  <td>
+                    A template that I think I used.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><a href="404.html">404.html</a></p>
+                  </td>
+                  <td>
+                    The 404 Not Found page.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </p>
+          <div id="symbol">
+            <img src="symbol.png" style="width: 100%">
+            <span class="w3-margin">A website by Nico</span>
+            <br>
+            <span class="w3-margin">Version 5.0<br>Created with <a href="https://shoelace.style">Shoelace</a> and <a href="https://w3schools.com/w3css">w3.css</a><br/>If for some reason this site doesn't work, you can access a non-shoelace version <a href="index-old.html">here</a>.</span>
+          </div>
+        </sl-tab-panel>
+        <sl-tab-panel name="non-html">
+          <p class="subTitle">
+            Non-HTML items
+          </p>
+          <p><a href="pizza.cur">pizza.cur</a> — a pizza cursor used in some pages</p>
+          <p><a href="isolde-1.cur">isolde-1.cur</a> — another cursor you could use if you changed the code</p>
+          <p><a href="shrek.png">shrek.png</a> — a picture of Shrek for <a href="shrek-clone.htm">shrek-clone.htm</a></p>
+          <p><a href="symbol.png">symbol.png</a> — my symbol in Portable Network Graphics form</p>
+          <p><a href="symbol.gif">symbol.gif</a> — my symbol in GIF form</p>
+          <p><a href="stuff.txt">stuff.txt</a> — some stuff</p>
+          <div id="symbol">
+            <img src="symbol.png" style="width: 100%">
+            <span class="w3-margin">A website by Nico</span>
+            <br>
+            <span class="w3-margin">Version 5.1<br/>Created with <a href="https://shoelace.style">Shoelace</a> and <a href="https://w3schools.com/w3css">w3.css</a><br/>If for some reason this site doesn't work, you can access a non-shoelace version <a href="index-old.html">here</a>.</span>
+          </div>
+        </sl-tab-panel>
+      </sl-tab-group>
     </div>
   </body>
 </html>
