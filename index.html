@@ -22,17 +22,9 @@
         inherits: true;
         initial-value: 1;
       }
-      @property --site-space-multiplier {
-        syntax: "<number>";
-        inherits: true;
-        initial-value: 1;
-      }
       :root {
-        --content-gap-l: calc(var(--site-space-multiplier) * var(--wa-space-2xl));
-        --content-gap-s: calc(var(--site-space-multiplier) * var(--wa-space-s));
-
-        --site-font-size-m: calc(var(--site-font-size-multiplier) * var(--wa-font-size-m));
-        --site-font-size-l: calc(var(--site-font-size-multiplier) * var(--wa-font-size-l));
+        --site-font-size-m:  calc(var(--site-font-size-multiplier) * var(--wa-font-size-m));
+        --site-font-size-l:  calc(var(--site-font-size-multiplier) * var(--wa-font-size-l));
         --site-font-size-xl: calc(var(--site-font-size-multiplier) * var(--wa-font-size-xl));
 
         font-size: var(--site-font-size-m);
@@ -44,9 +36,9 @@
 
           > .content {
             > *:not(:first-child) {
-              margin-block-start: var(--content-gap-l);
+              margin-block-start: var(--wa-space-2xl);
               > *:not(:first-child) {
-                margin-block-start: var(--content-gap-s);
+                margin-block-start: var(--wa-space-s);
               }
             }
           }
@@ -64,7 +56,7 @@
           .not-a-big-red-button {
             color: white;
             padding: var(--wa-space-s);
-            border-radius: var(--wa-space-xs);
+            border-radius: var(--wa-border-radius-m);
             text-decoration: none;
 
             --button-color: var(--wa-color-red-50);
@@ -217,13 +209,25 @@
         resetSettingsButton.addEventListener('click', () => resetSettings());
 
         const fontScaleInput = document.querySelector('#font-scale-input');
+        const spaceScaleInput = document.querySelector('#space-scale-input');
+        const borderRadiusScaleInput = document.querySelector('#border-radius-scale-input');
 
         const settings = {
           'fontScale': ['--site-font-size-multiplier', fontScaleInput],
+          'spaceScale': ['--wa-space-scale', spaceScaleInput],
+          'borderRadiusScale': ['--wa-border-radius-scale', borderRadiusScaleInput],
         };
 
-        fontScaleInput.addEventListener('input', () => {
+        fontScaleInput.addEventListener('change', () => {
           updateSetting('fontScale');
+        });
+
+        spaceScaleInput.addEventListener('change', () => {
+          updateSetting('spaceScale');
+        });
+
+        borderRadiusScaleInput.addEventListener('change', () => {
+          updateSetting('borderRadiusScale');
         });
 
         for (const [setting, settingStuff] of Object.entries(settings)) {
@@ -248,7 +252,7 @@
         <div class="wa-cluster">
           <wa-icon-button data-toggle-nav name="bars"></wa-icon-button>
           <h4 class="header-home-page-link-header"><a href="." class="header-home-page-link"><code>nico.computate.org</code></a></h4>
-          <wa-button id="settings-button" pill size="small" appearance="filled outlined">Settings</wa-button>
+          <wa-button id="settings-button" pill size="small" appearance="accent" variant="brand">Settings</wa-button>
         </div>
         <div>
           <wa-button-group size="small">
@@ -274,9 +278,11 @@
           <i>For those who love to set.</i>
           <wa-divider></wa-divider>
           <wa-slider id="font-scale-input" label="font scale" hint="useful for mobile users who need smaller text" min=".5" max="3" step=".1" value="1"></wa-slider>
+          <wa-slider id="space-scale-input" label="space scale" hint="to adjust how big padding, margin, etc. is" min="0" max="3" step=".05" value="1"></wa-slider>
+          <wa-slider id="border-radius-scale-input" label="border radius scale" hint="to adjust the border radius of rounded elements (excluding pills)" min="0" max="5" step=".1" value="1"></wa-slider>
           <footer class="settings-footer" slot="footer">
             <wa-button id="reset-settings-button" appearance="plain" variant="danger">Reset settings</wa-button>
-            <wa-button appearance="filled outlined" data-dialog="close" variant="success" appearance="filled outlined">Done</wa-button>
+            <wa-button pill appearance="accent" data-dialog="close" variant="brand">Done</wa-button>
           </footer>
         </wa-dialog>
         <div class="content">
