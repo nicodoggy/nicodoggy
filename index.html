@@ -93,12 +93,38 @@
           display: grid;
         }
         #system-button {
+          --b-start-color: var(--wa-color-neutral-80);
+          --b-end-color: var(--wa-color-neutral-30);
+
+          --t-start-color: var(--wa-color-neutral-40);
+          --t-end-color: var(--wa-color-neutral-60);
+
+          --b-start: var(--b-start-color);
+          --b-end: var(--b-end-color);
+
+          --t-start: var(--t-start-color);
+          --t-end: var(--t-end-color);
+
+          &:hover {
+            --b-start: color-mix(in oklab, var(--b-start-color), var(--wa-color-neutral-90));
+            --b-end: color-mix(in oklab, var(--b-end-color), var(--wa-color-neutral-10));
+
+            /* enable if you want */
+            /* --t-start: color-mix(in oklab, var(--t-start-color), var(--wa-color-neutral-05));
+            --t-end: color-mix(in oklab, var(--t-end-color), var(--wa-color-neutral-95)); */
+          }
+
+          &:active {
+            --b-start: color-mix(in oklab, var(--b-start-color), var(--wa-color-mix-active));
+            --b-end: color-mix(in oklab, var(--b-end-color), var(--wa-color-mix-active));
+          }
+
           &::part(base) {
-            border-image: linear-gradient(120deg, var(--wa-color-neutral-80) 50%, var(--wa-color-neutral-30) 50%, var(--wa-color-neutral-30)) 1 fill;
+            border-image: linear-gradient(120deg, var(--b-start, --b-start-color) 50%, var(--b-end, --b-end-color) 50%, var(--b-end, --b-end-color)) 1 fill;
           }
           &::part(label) {
             color: transparent;
-            background: linear-gradient(120deg, var(--wa-color-neutral-40) 50%, var(--wa-color-neutral-60) 50%, var(--wa-color-neutral-60));
+            background: linear-gradient(120deg, var(--t-start, --t-start-color) 50%, var(--t-end, --t-end-color) 50%, var(--t-end, --t-end-color));
             background-clip: text;
           }
         }
