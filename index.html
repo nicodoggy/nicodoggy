@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="wa-cloak">
+<html lang="en" class="wa-cloak wa-dark">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +17,25 @@
       @import url(https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/webawesome.css) layer(webawesome);
 
       /* custom styles */
+      @property --site-font-size-multiplier {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 1;
+      }
+      @property --site-space-multiplier {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 1;
+      }
       :root {
-        --space-scale: 2;
-        --content-gap-l: calc(var(--space-scale) * var(--wa-space-2xl));
-        --content-gap-s: calc(var(--space-scale) * var(--wa-space-s));
+        --content-gap-l: calc(var(--site-space-multiplier) * var(--wa-space-2xl));
+        --content-gap-s: calc(var(--site-space-multiplier) * var(--wa-space-s));
+
+        --site-font-size-m: calc(var(--site-font-size-multiplier) * var(--wa-font-size-m));
+        --site-font-size-l: calc(var(--site-font-size-multiplier) * var(--wa-font-size-l));
+        --site-font-size-xl: calc(var(--site-font-size-multiplier) * var(--wa-font-size-xl));
+
+        font-size: var(--site-font-size-m);
       }
       wa-page {
         > main {
@@ -69,16 +84,16 @@
         }
 
         &[view=desktop] {
-          font-size: var(--wa-font-size-l);
           &::part(navigation) {
             border-right: var(--wa-border-style) var(--wa-panel-border-width) var(--wa-color-surface-border);
           }
         }
         &[view=mobile] {
-          h1 {font-size: var(--wa-font-size-xl);}
-          h3 {font-size: var(--wa-font-size-l);}
-          .wa-heading-m {font-size: var(--wa-font-size-m);}
+          h1 {font-size: 1.6rem;}
         }
+        h1 {font-size: 2rem;}
+        h3 {font-size: 1.5rem;}
+        h4 {font-size: 1.4rem;}
 
         > header {
           padding-block: var(--wa-space-s);
@@ -128,7 +143,11 @@
             background-clip: text;
           }
         }
-        cursor: url(pizza.cur), auto;
+        .settings-footer {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
       }
     </style>
     <!-- theme toggle -->
@@ -160,13 +179,67 @@
 
       applyColorScheme()
 
-      const lightButton = document.getElementById('light-button');
-      const darkButton = document.getElementById('dark-button');
-      const systemButton = document.getElementById('system-button');
+      const lightButton = document.querySelector('#light-button');
+      const darkButton = document.querySelector('#dark-button');
+      const systemButton = document.querySelector('#system-button');
 
       lightButton.addEventListener('click', () => changeColorScheme(colorSchemeLight));
       darkButton.addEventListener('click', () => changeColorScheme(colorSchemeDark));
       systemButton.addEventListener('click', () => changeColorScheme(colorSchemeSystem));
+    </script>
+    <!-- settings dialog -->
+    <script type="module">
+      Promise.all([
+        customElements.whenDefined('wa-slider')
+      ]).then(() => {
+        function updateSetting(setting) {
+          const settingStuff = settings[setting];
+          const settingCSSProperty = settingStuff[0];
+          const settingInput = settingStuff[1];
+
+          const settingValue = settingInput.value;
+          localStorage.setItem(setting, settingInput.value);
+          document.documentElement.style.setProperty(settingCSSProperty, settingValue);
+        };
+        function resetSettings() {
+          for (const [setting, settingStuff] of Object.entries(settings)) {
+            const settingInput = settingStuff[1];
+            settingInput.value = settingInput.defaultValue;
+            updateSetting(setting)
+          }
+        };
+
+        const openSettingsButton = document.querySelector('#settings-button');
+        const settingsDialog = document.querySelector('#settings-dialog');
+        openSettingsButton.addEventListener('click', () => settingsDialog.open = true);
+
+        const resetSettingsButton = document.querySelector('#reset-settings-button');
+        resetSettingsButton.addEventListener('click', () => resetSettings());
+
+        const fontScaleInput = document.querySelector('#font-scale-input');
+
+        const settings = {
+          'fontScale': ['--site-font-size-multiplier', fontScaleInput],
+        };
+
+        fontScaleInput.addEventListener('input', () => {
+          updateSetting('fontScale');
+        });
+
+        for (const [setting, settingStuff] of Object.entries(settings)) {
+          const settingCSSProperty = settingStuff[0];
+          const settingInput = settingStuff[1];
+
+          const settingStoredValue = localStorage.getItem(setting);
+          if (settingStoredValue != null) {
+            settingInput.value = settingStoredValue;
+          }
+          else {
+            localStorage.setItem(setting, settingInput.defaultValue);
+          }
+          document.documentElement.style.setProperty(settingCSSProperty, localStorage.getItem(setting));
+        }
+    });
     </script>
   </head>
   <body>
@@ -175,12 +248,15 @@
         <div class="wa-cluster">
           <wa-icon-button data-toggle-nav name="bars"></wa-icon-button>
           <h4 class="header-home-page-link-header"><a href="." class="header-home-page-link"><code>nico.computate.org</code></a></h4>
+          <wa-button id="settings-button" pill size="small" appearance="filled outlined">Settings</wa-button>
         </div>
-        <wa-button-group size="small">
-          <wa-button pill appearance="filled outlined" class="wa-light" id="light-button">light</wa-button>
-          <wa-button pill appearance="filled outlined" id="system-button">system</wa-button>
-          <wa-button pill appearance="filled outlined" class="wa-dark" id="dark-button">dark</wa-button>
-        </wa-button-group>
+        <div>
+          <wa-button-group size="small">
+            <wa-button pill appearance="filled outlined" class="wa-light" id="light-button">light</wa-button>
+            <wa-button pill appearance="filled outlined" id="system-button">system</wa-button>
+            <wa-button pill appearance="filled outlined" class="wa-dark" id="dark-button">dark</wa-button>
+          </wa-button-group>
+        </div>
       </header>
       <nav slot="navigation">
         <div class="wa-stack">
@@ -194,13 +270,18 @@
         </div>
       </nav>
       <main>
+        <wa-dialog id="settings-dialog" label="Settings">
+          <i>For those who love to set.</i>
+          <wa-divider></wa-divider>
+          <wa-slider id="font-scale-input" label="font scale" hint="useful for mobile users who need smaller text" min=".5" max="3" step=".1" value="1"></wa-slider>
+          <footer class="settings-footer" slot="footer">
+            <wa-button id="reset-settings-button" appearance="plain" variant="danger">Reset settings</wa-button>
+            <wa-button appearance="filled outlined" data-dialog="close" variant="success" appearance="filled outlined">Done</wa-button>
+          </footer>
+        </wa-dialog>
         <div class="content">
           <hgroup>
-            <h1 class="center">
-              <code>
-                nico.computate.org
-              </code>
-            </h1>
+            <h1 class="center">nico.computate.org</h1>
             <p class="wa-caption-xl center">
               a website of stuff
             </p>
