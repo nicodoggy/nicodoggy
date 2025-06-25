@@ -60,7 +60,6 @@
         }
         > nav {
           min-width: 300px;
-          border-inline-end: var(--wa-border-style) var(--wa-border-width-s) var(--wa-color-surface-border);
         }
         .header-home-page-link {
           text-decoration: none;
@@ -71,6 +70,9 @@
 
         &[view=desktop] {
           font-size: var(--wa-font-size-l);
+          &::part(navigation) {
+            border-right: var(--wa-border-style) var(--wa-panel-border-width) var(--wa-color-surface-border);
+          }
         }
         &[view=mobile] {
           h1 {font-size: var(--wa-font-size-xl);}
@@ -90,26 +92,53 @@
         .grid {
           display: grid;
         }
+        #system-button {
+          &::part(base) {
+            border-image: linear-gradient(120deg, var(--wa-color-neutral-80) 50%, var(--wa-color-neutral-30) 50%, var(--wa-color-neutral-30)) 1 fill;
+          }
+          &::part(label) {
+            color: transparent;
+            background: linear-gradient(120deg, var(--wa-color-neutral-40) 50%, var(--wa-color-neutral-60) 50%, var(--wa-color-neutral-60));
+            background-clip: text;
+          }
+        }
         cursor: url(pizza.cur), auto;
       }
     </style>
     <!-- theme toggle -->
     <script type="module">
       const colorSchemeStorageKey = 'colorScheme';
-      const colorSchemeLight = 'light'
-      const colorSchemeDark = 'dark'
-      const colorScheme = localStorage.getItem(colorSchemeStorageKey);
-      if (colorScheme === null) {
-        localStorage.setItem(colorSchemeStorageKey, colorSchemeLight);
+
+      const colorSchemeLight = 'light';
+      const colorSchemeDark = 'dark';
+      const colorSchemeSystem = 'system';
+
+      function applyColorScheme() {
+        const localStorageColorScheme = localStorage.getItem(colorSchemeStorageKey);
+        if (localStorageColorScheme === colorSchemeLight) {
+          document.documentElement.classList.remove('wa-dark');
+        }
+        else if (localStorageColorScheme === colorSchemeDark) {
+          document.documentElement.classList.add('wa-dark');
+        }
+        else {
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {document.documentElement.classList.add('wa-dark')}
+          else {document.documentElement.classList.remove('wa-dark')}
+        }
       }
-      else if (colorScheme === colorSchemeDark) {
-        document.documentElement.classList.add('wa-dark');
+
+      function changeColorScheme(colorScheme) {
+        localStorage.setItem(colorSchemeStorageKey, colorScheme);
+        applyColorScheme();
       }
 
       const lightButton = document.getElementById('light-button');
       const darkButton = document.getElementById('dark-button');
-      lightButton.addEventListener('click', () => {document.documentElement.classList.remove('wa-dark'); localStorage.setItem(colorSchemeStorageKey, colorSchemeLight)})
-      darkButton.addEventListener('click', () => {document.documentElement.classList.add('wa-dark'); localStorage.setItem(colorSchemeStorageKey, colorSchemeDark)})
+      const systemButton = document.getElementById('system-button');
+
+      lightButton.addEventListener('click', () => changeColorScheme(colorSchemeLight));
+      darkButton.addEventListener('click', () => changeColorScheme(colorSchemeDark));
+      systemButton.addEventListener('click', () => changeColorScheme(colorSchemeSystem));
     </script>
   </head>
   <body>
@@ -117,10 +146,11 @@
       <header slot="header">
         <div class="wa-cluster">
           <wa-icon-button data-toggle-nav name="bars"></wa-icon-button>
-          <h4 class="header-home-page-link-header"><a href="/" class="header-home-page-link"><code>nico.computate.org</code></a></h4>
+          <h4 class="header-home-page-link-header"><a href="." class="header-home-page-link"><code>nico.computate.org</code></a></h4>
         </div>
         <wa-button-group size="small">
           <wa-button pill appearance="filled outlined" class="wa-light" id="light-button">light</wa-button>
+          <wa-button pill appearance="filled outlined" id="system-button">system</wa-button>
           <wa-button pill appearance="filled outlined" class="wa-dark" id="dark-button">dark</wa-button>
         </wa-button-group>
       </header>
