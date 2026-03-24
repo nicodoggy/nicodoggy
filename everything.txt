@@ -12,6 +12,9 @@ This file shows (probably) everything in this website. I recommend you instead l
 │   ├── packed-refs
 │   ├── logs
 │   ├── index
+│   ├── COMMIT_EDITMSG
+│   ├── FETCH_HEAD
+│   ├── ORIG_HEAD
 ├── 404.html
 ├── CNAME
 ├── LICENSE
@@ -45,10 +48,14 @@ This file shows (probably) everything in this website. I recommend you instead l
 ├── symbol.png
 ├── template.html
 ├── index-old.html
-├── index.html
 ├── awesome-hover-effect.html
 ├── grid.html
 ├── shrek-windows.html
 ├── index-very-old.html
 ├── everything.txt
 ├── everything.py
+├── index.html
+├── upgrade-button
+│   ├── index.html
+│   ├── pizza.cur
+│   ├── segoeui.ttf
