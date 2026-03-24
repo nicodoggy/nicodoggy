@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upgrade the button</title>
+
+    <style>
+      /* google sans, roboto */
+      @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+      /* segoe ui */
+      @font-face {
+        font-family: "Segoe UI";
+        src:
+          local("Segoe UI"),
+          url("segoeui.ttf");
+      }
+
+      :root, body {
+        padding: initial;
+        margin: initial;
+        height: 100%;
+      }
+
+      #the-button {
+        display: inline-block;
+        margin: .4rem;
+        &.l1 {
+          /* wikipedia button */
+          color: #36c;
+          user-select: none;
+          font-family: sans-serif;
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+          &:active {
+            color: #233566;
+          }
+          &::before {
+            content: "[";
+            color: initial;
+          }
+          &::after {
+            content: "]";
+            color: initial;
+          }
+        }
+        &.l2 {
+          /* vscode with monokai pro theme button */
+          cursor: pointer;
+          user-select: none;
+
+          background-color: #333;
+          color: #bbb;
+          padding: .3rem .5rem;
+          border-radius: 4px;
+          font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
+          font-size: 11px;
+
+          &:hover {
+            background-color: #444;
+          }
+          &:active {
+            background-color: #333;
+          }
+        }
+        &.l3 {
+          /* google inspired button */
+          cursor: pointer;
+          user-select: none;
+
+          font-family: "Google Sans", "Roboto", sans-serif;
+          font-weight: 500;
+          font-size: 14px;
+
+          background-color: #c2e7ff;
+          color: #062e6f;
+          padding: 10px 24px;
+          border-radius: 9999px;
+        }
+        &.l4 {
+          /* button from my Not a big bed button page */
+          font-size: 20pt;
+          font-family: "Verdana", sans-serif;
+          line-height: 1.5;
+          padding: 12px 24px;
+          border-radius: 8px;
+          color: #fff;
+          background-color: #f44336;
+          cursor: url('pizza.cur'), default; /* default to make sure there isn't a text cursor */
+        }
+      }
+      .dark {
+        color-scheme: dark;
+      }
+      .black {
+        background-color: black;
+      }
+      .center-on-page {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+      }
+      .pizza-cursor {
+        cursor: url('pizza.cur'), auto;
+      }
+      #version, #level-display {
+        position: absolute;
+        bottom: .2rem;
+        font-family: monospace;
+      }
+      #version {
+        left: .4rem;
+      }
+      #level-display {
+        right: .4rem;
+      }
+    </style>
+    <script type="module">
+      const but = document.querySelector('#the-button')
+      const levelDisplay = document.querySelector('#level-display')
+      var level = 0
+      var levels = [
+        "browser text",
+        "Wikipedia",
+        "Monokai Pro",
+        "Google",
+        "Not a big red button"
+      ]
+
+      function updateLevelDisplay() {
+        let levelString
+        let levelName = levels[level]
+        if (levelName) {
+          levelString = `level ${level} (${levelName})`
+        }
+        else {
+          levelString = "level " + level
+        }
+        levelDisplay.textContent = levelString
+      }
+
+      but.textContent = 'Upgrade this Button'
+      updateLevelDisplay()
+
+      but.addEventListener('click', () => {
+        level += 1
+        switch (level) {
+          case 1:
+            but.classList.add('l1')
+            updateLevelDisplay()
+            break
+          // case 2:
+          //   but.textContent = 'Upgrade this button'
+          //   break
+          case 2:
+            document.documentElement.classList.add('dark')
+            but.classList.remove('l1')
+            but.classList.add('l2')
+            updateLevelDisplay()
+            break
+          case 3:
+            document.documentElement.classList.remove('dark')
+            but.classList.remove('l2')
+            but.classList.add('l3')
+            updateLevelDisplay()
+            break
+          case 4:
+            document.documentElement.classList.add('dark', 'black', 'pizza-cursor')
+            but.classList.remove('l3')
+            but.classList.add('l4', 'center-on-page')
+            updateLevelDisplay()
+            break
+          case 5:
+            document.documentElement.textContent = 'the end.'
+            break
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <span id="the-button">please enable javascript</span>
+    <span id="version">version 0.0.0</span>
+    <span id="level-display">loading...</span>
+  </body>
+</html>
