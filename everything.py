@@ -22,7 +22,7 @@ for stuff_thing in current_dir.iterdir():
 #  write it out
 #   write it out
 
-lines = ['This file shows (probably) everything in this website. I recommend you instead look at the source code at https://github.com/nicodoggy/nicodoggy\n\n']
+lines = ['This file is a tree of the folder where I store the website. It only goes one directory level deep. I recommend you instead look at the source code at https://github.com/nicodoggy/nicodoggy\n\n']
 
 for stuff_thing in stuff_things:
   if type(stuff_things[stuff_thing]) == list:
