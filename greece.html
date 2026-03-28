@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scalable flag of greece</title>
+
+    <style>
+      :root, body {
+        padding: initial;
+        margin: initial;
+      }
+      .flag {
+        position: relative;
+        &.greece {
+          --flag-height: 100vh;
+          height: var(--flag-height);
+          aspect-ratio: 3 / 2;
+          --stripe-height: calc(var(--flag-height) / 9);
+
+          --flag-accent-color: #055eb0;
+          .stripe {
+            width: 100%;
+            height: var(--stripe-height);
+            &:nth-child(odd) {
+              background-color: var(--flag-accent-color);
+            }
+          }
+          .corner-overlay {
+            height: calc(5 * var(--stripe-height));
+            aspect-ratio: 1;
+            background-color: white;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+
+          .corner-square {
+            background-color: var(--flag-accent-color);
+
+            position: absolute;
+            height: calc(2 * var(--stripe-height));
+            aspect-ratio: 1;
+            &.square-1 {
+              top: 0;
+              left: 0;
+            }
+            &.square-2 {
+              top: 0;
+              left: calc(3 * var(--stripe-height));
+            }
+            &.square-3 {
+              top: calc(3 * var(--stripe-height));
+              left: 0;
+            }
+            &.square-4 {
+              top: calc(3 * var(--stripe-height));
+              left: calc(3 * var(--stripe-height));
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flag greece">
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="corner-overlay"></div>
+      <div class="corner-square square-1"></div>
+      <div class="corner-square square-2"></div>
+      <div class="corner-square square-3"></div>
+      <div class="corner-square square-4"></div>
+    </div>
+  </body>
+</html>
